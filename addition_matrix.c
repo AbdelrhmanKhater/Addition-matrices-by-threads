@@ -15,26 +15,31 @@ void* addMatrix(void* arg)
 }
 int main()
 {
-    int n, i;
+    int r, c, i;
     pthread_t threads[400];
     struct Node *n1 = (struct Node*) malloc((void*)sizeof(struct Node));
-    scanf("%d", &n);
-    for (i = 0; i < n * n; ++i)
-        scanf("%d", &arr1[i / n][i % n]);
-    for (i = 0; i < n * n; ++i)
-        scanf("%d", &arr2[i / n][i % n]);
-    for (i = 0;i < n * n; ++i)
+    printf("Please, insert r and c\n");
+    scanf("%d %d", &r, $c);
+    printf("Please, insert mat1\n");
+    for (i = 0; i < r * c; ++i)
+        scanf("%d", &arr1[i / c][i % c]);
+    printf("Please, insert mat2\n");
+    for (i = 0; i < r * c; ++i)
+        scanf("%d", &arr2[i / c][i % c]);
+    for (i = 0;i < r * c; ++i)
     {
-        n1->i = i / n;
-        n1->j = i % n;
+        n1->i = i / c;
+        n1->j = i % c;
         pthread_create(&threads[i], NULL, addMatrix, (void*)n1);
         pthread_join(threads[i], NULL);
     }
-    for (i = 0; i < n * n; ++i)
+    printf("Output =\n");
+    for (i = 0; i < r * c; ++i)
     {    
-        if ( i != 0 && (i % n) == 0)
+        if ( i != 0 && (i % c) == 0)
            printf("\n");
-        printf("%d ", arr3[i / n][i % n]);
+        printf("%d ", arr3[i / c][i % c]);
     }
+    printf("\n");
     return 0;
 }
