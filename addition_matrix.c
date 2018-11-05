@@ -19,7 +19,7 @@ int main()
     pthread_t threads[400];
     struct Node *n1 = (struct Node*) malloc((void*)sizeof(struct Node));
     printf("Please, insert r and c\n");
-    scanf("%d %d", &r, $c);
+    scanf("%d %d", &r, &c);
     printf("Please, insert mat1\n");
     for (i = 0; i < r * c; ++i)
         scanf("%d", &arr1[i / c][i % c]);
